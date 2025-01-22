@@ -1,27 +1,371 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Dimensions, View } from "react-native";
+import { CandlestickChart } from "react-native-wagmi-charts";
+
+const data = [
+   {
+      close: 252.1877,
+      timestamp: 1737552120,
+      high: 252.2488,
+      low: 252.0887,
+      open: 252.2488,
+   },
+   {
+      close: 251.9519,
+      timestamp: 1737552180,
+      high: 252.2079,
+      low: 251.9519,
+      open: 252.2079,
+   },
+   {
+      close: 251.6412,
+      timestamp: 1737552240,
+      high: 251.9529,
+      low: 251.5526,
+      open: 251.9529,
+   },
+   {
+      close: 251.6626,
+      timestamp: 1737552300,
+      high: 251.7297,
+      low: 251.5573,
+      open: 251.648,
+   },
+   {
+      close: 251.9612,
+      timestamp: 1737552360,
+      high: 251.966,
+      low: 251.606,
+      open: 251.6303,
+   },
+   {
+      close: 252.1005,
+      timestamp: 1737552420,
+      high: 252.1264,
+      low: 251.9528,
+      open: 251.9675,
+   },
+   {
+      close: 252.1379,
+      timestamp: 1737552480,
+      high: 252.2486,
+      low: 252.1284,
+      open: 252.1408,
+   },
+   {
+      close: 251.7854,
+      timestamp: 1737552540,
+      high: 252.1555,
+      low: 251.752,
+      open: 252.1522,
+   },
+   {
+      close: 251.7879,
+      timestamp: 1737552600,
+      high: 251.8842,
+      low: 251.6564,
+      open: 251.796,
+   },
+   {
+      close: 251.702,
+      timestamp: 1737552660,
+      high: 251.85,
+      low: 251.6164,
+      open: 251.8035,
+   },
+   {
+      close: 251.789,
+      timestamp: 1737552720,
+      high: 251.8208,
+      low: 251.4955,
+      open: 251.6419,
+   },
+   {
+      close: 251.9943,
+      timestamp: 1737552780,
+      high: 252.0407,
+      low: 251.7972,
+      open: 251.7972,
+   },
+   {
+      close: 251.9088,
+      timestamp: 1737552840,
+      high: 252.0764,
+      low: 251.853,
+      open: 251.9561,
+   },
+   {
+      close: 252.0494,
+      timestamp: 1737552900,
+      high: 252.0494,
+      low: 251.8664,
+      open: 251.9302,
+   },
+   {
+      close: 251.9991,
+      timestamp: 1737552960,
+      high: 252.0502,
+      low: 251.8671,
+      open: 252.0202,
+   },
+   {
+      close: 252.1044,
+      timestamp: 1737553020,
+      high: 252.1386,
+      low: 251.9576,
+      open: 251.9667,
+   },
+   {
+      close: 252.0943,
+      timestamp: 1737553080,
+      high: 252.2082,
+      low: 252.0558,
+      open: 252.1007,
+   },
+   {
+      close: 252.1054,
+      timestamp: 1737553140,
+      high: 252.1449,
+      low: 252.0318,
+      open: 252.0879,
+   },
+   {
+      close: 251.8236,
+      timestamp: 1737553200,
+      high: 252.0858,
+      low: 251.8174,
+      open: 252.0858,
+   },
+   {
+      close: 251.8131,
+      timestamp: 1737553260,
+      high: 252.005,
+      low: 251.8131,
+      open: 251.8235,
+   },
+   {
+      close: 251.9513,
+      timestamp: 1737553320,
+      high: 251.9513,
+      low: 251.7876,
+      open: 251.8436,
+   },
+   {
+      close: 251.7485,
+      timestamp: 1737553380,
+      high: 251.9391,
+      low: 251.6977,
+      open: 251.9391,
+   },
+   {
+      close: 251.729,
+      timestamp: 1737553440,
+      high: 251.8811,
+      low: 251.6832,
+      open: 251.7719,
+   },
+   {
+      close: 251.826,
+      timestamp: 1737553500,
+      high: 251.826,
+      low: 251.6082,
+      open: 251.7219,
+   },
+   {
+      close: 252.0076,
+      timestamp: 1737553560,
+      high: 252.0534,
+      low: 251.8077,
+      open: 251.8637,
+   },
+   {
+      close: 251.9885,
+      timestamp: 1737553620,
+      high: 252.1107,
+      low: 251.9419,
+      open: 251.9744,
+   },
+   {
+      close: 251.8424,
+      timestamp: 1737553680,
+      high: 252.0474,
+      low: 251.8191,
+      open: 252.0259,
+   },
+   {
+      close: 251.8515,
+      timestamp: 1737553740,
+      high: 251.9875,
+      low: 251.8192,
+      open: 251.8733,
+   },
+   {
+      close: 251.9004,
+      timestamp: 1737553800,
+      high: 251.9552,
+      low: 251.778,
+      open: 251.8248,
+   },
+   {
+      close: 252.0143,
+      timestamp: 1737553860,
+      high: 252.1226,
+      low: 251.9484,
+      open: 251.9657,
+   },
+   {
+      close: 251.958,
+      timestamp: 1737553920,
+      high: 251.9912,
+      low: 251.7994,
+      open: 251.9567,
+   },
+   {
+      close: 251.8519,
+      timestamp: 1737553980,
+      high: 252.0321,
+      low: 251.8446,
+      open: 251.9344,
+   },
+   {
+      close: 252.0491,
+      timestamp: 1737554040,
+      high: 252.1183,
+      low: 251.8574,
+      open: 251.8574,
+   },
+   {
+      close: 252.1181,
+      timestamp: 1737554100,
+      high: 252.2127,
+      low: 252.0307,
+      open: 252.054,
+   },
+   {
+      close: 252.0759,
+      timestamp: 1737554160,
+      high: 252.1363,
+      low: 251.9244,
+      open: 252.1257,
+   },
+   {
+      close: 252.2433,
+      timestamp: 1737554220,
+      high: 252.3046,
+      low: 252.0765,
+      open: 252.0765,
+   },
+   {
+      close: 252.2976,
+      timestamp: 1737554280,
+      high: 252.3234,
+      low: 252.0911,
+      open: 252.2192,
+   },
+   {
+      close: 252.4311,
+      timestamp: 1737554340,
+      high: 252.4311,
+      low: 252.2398,
+      open: 252.3114,
+   },
+   {
+      close: 251.984,
+      timestamp: 1737554400,
+      high: 252.426,
+      low: 251.984,
+      open: 252.3775,
+   },
+   {
+      close: 251.9906,
+      timestamp: 1737554460,
+      high: 252.0857,
+      low: 251.9242,
+      open: 251.9762,
+   },
+   {
+      close: 251.8686,
+      timestamp: 1737554520,
+      high: 252.0885,
+      low: 251.8686,
+      open: 251.9725,
+   },
+   {
+      close: 251.7046,
+      timestamp: 1737554580,
+      high: 251.9306,
+      low: 251.604,
+      open: 251.9075,
+   },
+   {
+      close: 251.6911,
+      timestamp: 1737554640,
+      high: 251.7783,
+      low: 251.5802,
+      open: 251.7019,
+   },
+   {
+      close: 251.2853,
+      timestamp: 1737554700,
+      high: 251.654,
+      low: 251.2209,
+      open: 251.6391,
+   },
+   {
+      close: 251.2706,
+      timestamp: 1737554760,
+      high: 251.3964,
+      low: 251.2481,
+      open: 251.268,
+   },
+   {
+      close: 251.3539,
+      timestamp: 1737554820,
+      high: 251.4107,
+      low: 251.2663,
+      open: 251.2971,
+   },
+   {
+      close: 251.4353,
+      timestamp: 1737554880,
+      high: 251.4537,
+      low: 251.3229,
+      open: 251.368,
+   },
+   {
+      close: 251.7939,
+      timestamp: 1737554940,
+      high: 251.8005,
+      low: 251.4759,
+      open: 251.4759,
+   },
+   {
+      close: 251.8538,
+      timestamp: 1737555000,
+      high: 251.8609,
+      low: 251.7245,
+      open: 251.7969,
+   },
+   {
+      close: 251.8586,
+      timestamp: 1737555060,
+      high: 251.8586,
+      low: 251.8586,
+      open: 251.8586,
+   },
+];
 
 export default function HomeScreen() {
+   const { height, width } = Dimensions.get("window");
+
    return (
-      <View style={styles.container}>
-         <Text style={styles.title}>Tab One</Text>
-         <View style={styles.separator} />
+      <View style={{ padding: 15, backgroundColor: "grey", height: height, display: "flex" }}>
+         <View style={{ backgroundColor: "black", borderRadius: 10, padding: 10, flexGrow: 1 }}>
+            <CandlestickChart.Provider data={data}>
+               <CandlestickChart width={width - 50} height={height * 0.7}>
+                  <CandlestickChart.Candles positiveColor="steelblue" negativeColor="grey" />
+               </CandlestickChart>
+            </CandlestickChart.Provider>
+         </View>
       </View>
    );
 }
-
-const styles = StyleSheet.create({
-   container: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
-   },
-   title: {
-      fontSize: 20,
-      fontWeight: "bold",
-   },
-   separator: {
-      marginVertical: 30,
-      height: 1,
-      width: "80%",
-   },
-});
